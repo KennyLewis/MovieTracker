@@ -24,37 +24,19 @@
 
             group.MapPost("/", async (IMovieService movieService, AddMovieRequest request) =>
             {
-                // This eventually needs to use a mapper or something less hard-coded
-                var movie = new Movie
-                {
-                    Id = Guid.NewGuid(),
-                    Title = request.Title,
-                    YearOfRelease = request.YearOfRelease
-                };
+                var movie = request.MapToMovie();
 
                 var result = await movieService.Create(movie);
                 return result;
             });
 
-            //group.MapPost("/", (Movie movie) =>
-            //{
-            //    movies.Add((Movie)movie);
-            //});
+            group.MapPut("/{id:guid}", async (IMovieService movieService, Guid id, UpdateMovieRequest request) =>
+            {
+                var existingMovie = request.MapToMovie(id);
+                await movieService.Update(existingMovie);
 
-            //group.MapPut("/{id:guid}", (Guid id, Movie request) =>
-            //{
-            //    var existingMovie = movies.Find(movie => movie.Id == id);
-            //    if (existingMovie is null)
-            //    {
-            //        return Results.NotFound(); // Handle the case where the movie does not exist
-            //    }
-
-            //    // Update properties
-            //    existingMovie.Title = request.Title;
-            //    existingMovie.YearOfRelease = request.YearOfRelease;
-
-            //    return Results.Ok(existingMovie); // Optionally return the updated movie
-            //});
+                return Results.Ok(existingMovie);
+            });
         }
     }
 }

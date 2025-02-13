@@ -27,8 +27,7 @@ namespace MovieTracker.API.Movies
 
         public async Task<IEnumerable<Movie>> GetAll()
         {
-            var movies = await _dbContext.Movies.ToListAsync();
-            return movies;
+            return await _dbContext.Movies.ToListAsync();
         }
 
         public async Task<Movie?> GetById(Guid id)
@@ -36,9 +35,14 @@ namespace MovieTracker.API.Movies
             return await _dbContext.Movies.FindAsync(id);
         }
 
-        public Task<Movie> Update(Movie movie)
+        public async Task<Movie> Update(Movie movie)
         {
-            throw new NotImplementedException();
+            _dbContext.Movies.Update(movie);
+            var result = await _dbContext.SaveChangesAsync();
+
+
+            // We'll eventually want to make sure the result is valid instead of just returning the same movie object
+            return movie;
         }
     }
 }
