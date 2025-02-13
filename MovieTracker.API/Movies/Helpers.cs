@@ -1,4 +1,6 @@
-﻿namespace MovieTracker.API.Movies
+﻿using MovieTracker.API.Movies;
+
+namespace MovieTracker.Data.Models
 {
     public static class Helpers
     {

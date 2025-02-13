@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MovieTracker.API.Movies;
+﻿
+using Microsoft.EntityFrameworkCore;
+using MovieTracker.Data.Models;
 
 namespace MovieTracker.API.Database
 {

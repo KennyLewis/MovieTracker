@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\MovieTracker.Data\MovieTracker.Data.csproj" />
   </ItemGroup>
 
 </Project>
