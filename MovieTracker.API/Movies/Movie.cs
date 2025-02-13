@@ -6,6 +6,7 @@ namespace MovieTracker.API.Movies
     {
         [Key]
         public required Guid Id { get; init; }
+        [MaxLength(255)]
 
         public required string Title { get; set; }
 
