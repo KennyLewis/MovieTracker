@@ -1,4 +1,6 @@
-﻿namespace MovieTracker.API.Movies
+﻿using MovieTracker.Data.Models;
+
+namespace MovieTracker.API.Movies
 {
     public static class MovieEndpoint
     {
