@@ -1,7 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace MovieTracker.API.Movies
+﻿namespace MovieTracker.API.Movies
 {
     public static class MovieEndpoint
     {
@@ -9,11 +6,20 @@ namespace MovieTracker.API.Movies
         {
             var group = app.MapGroup("movies");
 
-
-
-            group.MapGet("/", (IMovieService movieService) =>
+            group.MapGet("/", async (IMovieService movieService) =>
             {
-                return movieService.GetAll();
+                return await movieService.GetAll();
+            });
+
+            group.MapGet("/{id:guid}", async (IMovieService movieService, Guid id) =>
+            {
+                var matchingMovie = await movieService.GetById(id);
+                if (matchingMovie is null)
+                {
+                    return Results.NotFound($"Could not find a movie with id {id}");
+                }
+
+                return Results.Ok(matchingMovie);
             });
 
             //group.MapPost("/", (Movie movie) =>

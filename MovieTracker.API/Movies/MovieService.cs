@@ -28,9 +28,9 @@ namespace MovieTracker.API.Movies
             return movies;
         }
 
-        public Task<Movie?> GetById(Guid id)
+        public async Task<Movie?> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Movies.FindAsync(id);
         }
 
         public Task<Movie> Update(Movie movie)
