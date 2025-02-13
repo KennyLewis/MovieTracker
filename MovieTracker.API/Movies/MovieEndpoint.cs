@@ -6,18 +6,41 @@
         {
             var group = app.MapGroup("movies");
 
-            var movies = new List<Movie>();
-            movies.Add(new Movie { Id = Guid.NewGuid(), Title = "The Lion King", YearOfRelease = 1994 });
-            movies.Add(new Movie { Id = Guid.NewGuid(), Title = "Rocky", YearOfRelease = 1976 });
-
-            group.MapGet("/", () =>
+            group.MapGet("/", async (IMovieService movieService) =>
             {
-                return movies.OrderBy(x => x.YearOfRelease);
+                return await movieService.GetAll();
             });
 
-            group.MapPost("/", (Movie movie) =>
+            group.MapGet("/{id:guid}", async (IMovieService movieService, Guid id) =>
             {
-                movies.Add((Movie)movie);
+                var matchingMovie = await movieService.GetById(id);
+                if (matchingMovie is null)
+                {
+                    return Results.NotFound($"Could not find a movie with id {id}");
+                }
+
+                return Results.Ok(matchingMovie);
+            });
+
+            group.MapPost("/", async (IMovieService movieService, AddMovieRequest request) =>
+            {
+                var movie = request.MapToMovie();
+
+                var result = await movieService.Create(movie);
+                return result;
+            });
+
+            group.MapPut("/{id:guid}", async (IMovieService movieService, Guid id, UpdateMovieRequest request) =>
+            {
+                var existingMovie = request.MapToMovie(id);
+                await movieService.Update(existingMovie);
+
+                return Results.Ok(existingMovie);
+            });
+
+            group.MapDelete("/{id:guid}", async (IMovieService movieService, Guid id) => {
+                var movieDeleted = await movieService.DeleteById(id);
+                return movieDeleted ? Results.Ok() : Results.NotFound();
             });
         }
     }
