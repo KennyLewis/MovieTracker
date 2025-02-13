@@ -22,6 +22,20 @@
                 return Results.Ok(matchingMovie);
             });
 
+            group.MapPost("/", async (IMovieService movieService, AddMovieRequest request) =>
+            {
+                // This eventually needs to use a mapper or something less hard-coded
+                var movie = new Movie
+                {
+                    Id = Guid.NewGuid(),
+                    Title = request.Title,
+                    YearOfRelease = request.YearOfRelease
+                };
+
+                var result = await movieService.Create(movie);
+                return result;
+            });
+
             //group.MapPost("/", (Movie movie) =>
             //{
             //    movies.Add((Movie)movie);

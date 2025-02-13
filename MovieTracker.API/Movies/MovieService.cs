@@ -12,9 +12,12 @@ namespace MovieTracker.API.Movies
         {
             _dbContext = dbContext;
         }
-        public Task<Movie> Create(Movie movie)
+        public async Task<Movie> Create(Movie movie)
         {
-            throw new NotImplementedException();
+            _dbContext.Movies.Add(movie);
+            await _dbContext.SaveChangesAsync();
+
+            return movie;
         }
 
         public Task<bool> DeleteById(Guid id)
