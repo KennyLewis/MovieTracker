@@ -37,6 +37,11 @@
 
                 return Results.Ok(existingMovie);
             });
+
+            group.MapDelete("/{id:guid}", async (IMovieService movieService, Guid id) => {
+                var movieDeleted = await movieService.DeleteById(id);
+                return movieDeleted ? Results.Ok() : Results.NotFound();
+            });
         }
     }
 }

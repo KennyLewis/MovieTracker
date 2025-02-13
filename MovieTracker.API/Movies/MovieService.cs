@@ -20,9 +20,10 @@ namespace MovieTracker.API.Movies
             return movie;
         }
 
-        public Task<bool> DeleteById(Guid id)
+        public async Task<bool> DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await _dbContext.Movies.Where(movie => movie.Id == id).ExecuteDeleteAsync();
+            return result > 0;
         }
 
         public async Task<IEnumerable<Movie>> GetAll()
