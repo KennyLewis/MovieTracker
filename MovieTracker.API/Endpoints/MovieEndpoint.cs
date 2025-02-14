@@ -2,7 +2,7 @@
 using MovieTracker.Core.Dtos;
 using MovieTracker.Core.Helpers;
 
-namespace MovieTracker.API.Models
+namespace MovieTracker.API.Endpoints
 {
     public static class MovieEndpoint
     {
