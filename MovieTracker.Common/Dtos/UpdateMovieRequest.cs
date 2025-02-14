@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieTracker.API.Movies
+namespace MovieTracker.Core.Dtos
 {
     public class UpdateMovieRequest
     {

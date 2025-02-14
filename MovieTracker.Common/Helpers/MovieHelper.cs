@@ -1,8 +1,9 @@
-﻿using MovieTracker.API.Movies;
+﻿using MovieTracker.Core.Dtos;
+using MovieTracker.Data.Models;
 
-namespace MovieTracker.Data.Models
+namespace MovieTracker.Core.Helpers
 {
-    public static class Helpers
+    public static class MovieHelper
     {
         public static Movie MapToMovie(this AddMovieRequest request)
         {

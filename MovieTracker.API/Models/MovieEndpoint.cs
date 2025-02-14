@@ -1,6 +1,8 @@
-﻿using MovieTracker.Data.Models;
+﻿using MovieTracker.API.Services;
+using MovieTracker.Core.Dtos;
+using MovieTracker.Core.Helpers;
 
-namespace MovieTracker.API.Movies
+namespace MovieTracker.API.Models
 {
     public static class MovieEndpoint
     {
@@ -40,7 +42,8 @@ namespace MovieTracker.API.Movies
                 return Results.Ok(existingMovie);
             });
 
-            group.MapDelete("/{id:guid}", async (IMovieService movieService, Guid id) => {
+            group.MapDelete("/{id:guid}", async (IMovieService movieService, Guid id) =>
+            {
                 var movieDeleted = await movieService.DeleteById(id);
                 return movieDeleted ? Results.Ok() : Results.NotFound();
             });

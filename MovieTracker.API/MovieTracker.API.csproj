@@ -19,7 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MovieTracker.Common\MovieTracker.Core.csproj" />
     <ProjectReference Include="..\MovieTracker.Data\MovieTracker.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
   </ItemGroup>
 
 </Project>

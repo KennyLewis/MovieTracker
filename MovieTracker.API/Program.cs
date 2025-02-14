@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using MovieTracker.API.Database;
-using MovieTracker.API.Movies;
+using MovieTracker.API.Context;
+using MovieTracker.API.Models;
+using MovieTracker.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

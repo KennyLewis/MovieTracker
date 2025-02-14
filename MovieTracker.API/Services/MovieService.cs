@@ -1,9 +1,9 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using MovieTracker.API.Database;
+using MovieTracker.API.Context;
 using MovieTracker.Data.Models;
 
-namespace MovieTracker.API.Movies
+namespace MovieTracker.API.Services
 {
     public class MovieService : IMovieService
     {
@@ -29,7 +29,8 @@ namespace MovieTracker.API.Movies
 
         public async Task<IEnumerable<Movie>> GetAll()
         {
-            return await _dbContext.Movies.ToListAsync();
+            var movies = await _dbContext.Movies.ToListAsync();
+            return movies.OrderBy(movie => movie.YearOfRelease).ThenBy(movie => movie.Title);
         }
 
         public async Task<Movie?> GetById(Guid id)
@@ -41,7 +42,6 @@ namespace MovieTracker.API.Movies
         {
             _dbContext.Movies.Update(movie);
             var result = await _dbContext.SaveChangesAsync();
-
 
             // We'll eventually want to make sure the result is valid instead of just returning the same movie object
             return movie;
