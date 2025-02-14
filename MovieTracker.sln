@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTracker.API", "MovieTr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTracker.Data", "MovieTracker.Data\MovieTracker.Data.csproj", "{EC91BE8C-24F3-4167-899E-D2F6C3723C53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTracker.Core", "MovieTracker.Common\MovieTracker.Core.csproj", "{377AC61A-2099-4145-90D4-1C8500ED47EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EC91BE8C-24F3-4167-899E-D2F6C3723C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC91BE8C-24F3-4167-899E-D2F6C3723C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC91BE8C-24F3-4167-899E-D2F6C3723C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377AC61A-2099-4145-90D4-1C8500ED47EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377AC61A-2099-4145-90D4-1C8500ED47EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377AC61A-2099-4145-90D4-1C8500ED47EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377AC61A-2099-4145-90D4-1C8500ED47EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

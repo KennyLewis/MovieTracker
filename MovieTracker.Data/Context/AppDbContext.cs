@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieTracker.Data.Models;
 
-namespace MovieTracker.API.Database
+namespace MovieTracker.API.Context
 {
     public class AppDbContext : DbContext
     {
