@@ -1,6 +1,6 @@
 @MovieTracker.API_HostAddress = http://localhost:5166
 
-GET {{MovieTracker.API_HostAddress}}/weatherforecast/
+GET {{MovieTracker.API_HostAddress}}/movies/
 Accept: application/json
 
 ###
